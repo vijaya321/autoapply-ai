@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: autoapply-ai-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autoapply
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
+
+linkedin:
+  client-id: ${LINKEDIN_CLIENT_ID}
+  client-secret: ${LINKEDIN_CLIENT_SECRET}
+  redirect-uri: http://localhost:3000/api/auth/callback/linkedin
+  scopes: r_liteprofile r_emailaddress w_member_social
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 86400000 # 24 hours in milliseconds
+
+cors:
+  allowed-origins: http://localhost:3000
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: Authorization,Content-Type
+  allow-credentials: true 
